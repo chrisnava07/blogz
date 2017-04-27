@@ -7,14 +7,18 @@
 {% for post in posts %}
 
 <h2><a href="/blog/{{ post.key().id() }}">{{ post.title }}</a></h2>
-<p>{{ post.body }}</p>
+<p>{{ post.body }}</p></br>
+written by <a href="/blog/{{ post.author.username }}"> {{ post.author.username }}</a>
+</br>
+</br>
+
 <!-- TODO add author w/ link to author's blog page -->
 
 {% endfor %}
 
 {% if username %}
     {% if prev_page %}
-    <a href="/blog/{{ username }}?page={{ prev_page }}">&lt; prev</a>
+    <a href="/blog/{{ post.author.username }}?page={{ prev_page }}">&lt; prev</a>
     {% endif %}
 
     {% if prev_page and next_page %}
@@ -22,7 +26,7 @@
     {% endif %}
 
     {% if next_page %}
-    <a href="/blog/{{ username }}?page={{ next_page }}">next &gt;</a>
+    <a href="/blog/{{ post.author.username }}?page={{ next_page }}">next &gt;</a>
     {% endif %}
 {% endif %}
 
